@@ -32,7 +32,11 @@ namespace HomeWorkTheme9
             bot.StopReceiving();
 
         }
-
+        /// <summary>
+        /// отправка и получение различных типов файлов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static async void MessageListener(object sender, MessageEventArgs e)
         {
             Console.WriteLine(nameCommand);
@@ -76,7 +80,11 @@ namespace HomeWorkTheme9
             Thread.Sleep(300);
         }
 
-
+        /// <summary>
+        /// получение команды от бота
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static async void MessageCommand(object sender, MessageEventArgs e)
         {
             
