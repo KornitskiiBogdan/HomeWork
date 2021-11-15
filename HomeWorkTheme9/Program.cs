@@ -54,7 +54,7 @@ namespace HomeWorkTheme9
                         );
                     break;
                 case "Отправить аудио":
-                    DownLoad(e.Message.Document.FileId, e.Message.Document.FileName);
+                    DownLoad(e.Message.Document.FileId, $"{Directory.GetCurrentDirectory()}//audio//{e.Message.Document.FileName}");
                     //DownLoad(e.Message.Document.FileId, $"{Directory.GetCurrentDirectory()}//audio//{e.Message.Document.FileName}");
                     break;
 
@@ -94,6 +94,7 @@ namespace HomeWorkTheme9
                 switch (msg.Text)
                 {
                     case "Отправить документ":
+                        
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите файл, который вы хотите отправить");
@@ -101,11 +102,13 @@ namespace HomeWorkTheme9
                         break;
 
                     case "Получить документ":
+                        
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите документ, который вы хотите получить, напишите название файла в чат");
-                        GetNameFile(msg.Chat.Id, "file");
                         nameCommand = "Получить документ";
+                        GetNameFile(msg.Chat.Id, "file");
+                        
                         break;
                     case "Отправить аудио":
                         await bot.SendTextMessageAsync(
