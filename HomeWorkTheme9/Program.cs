@@ -18,13 +18,17 @@ namespace HomeWorkTheme9
         static string nameCommand;
         static void Main(string[] args)
         {
+            //Если у вас не существуют следующие папки, то раскоментируйте код
+            //Directory.CreateDirectory("audio");
+            //Directory.CreateDirectory("file");
+            //Directory.CreateDirectory("pictures");
             //вставьте свой токен
             string token = File.ReadAllText($"{ Directory.GetCurrentDirectory()}//token.txt ");
             bot = new TelegramBotClient(token);
             bot.StartReceiving();
 
             bot.OnMessage += MessageCommand;
- 
+
             bot.OnMessage += MessageListener;
 
             Console.ReadLine();
@@ -94,51 +98,55 @@ namespace HomeWorkTheme9
                 switch (msg.Text)
                 {
                     case "Отправить документ":
-                        
+                        nameCommand = "Отправить документ";
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите файл, который вы хотите отправить");
-                        nameCommand = "Отправить документ";
+                        
                         break;
 
                     case "Получить документ":
-                        
+                        nameCommand = "Получить документ";
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите документ, который вы хотите получить, напишите название файла в чат");
-                        nameCommand = "Получить документ";
                         GetNameFile(msg.Chat.Id, "file");
                         
                         break;
                     case "Отправить аудио":
+                        nameCommand = "Отправить аудио";
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите аудио, которое вы хотите отправить");
-                        nameCommand = "Отправить аудио";
+                        
                         break;
 
                     case "Получить аудио":
+                        nameCommand = "Получить аудио";
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите аудио, которое вы хотите получить, напишите название аудио в чат");
                         GetNameFile(msg.Chat.Id, "audio");
-                        nameCommand = "Получить аудио";
+                        
                         break;
                     case "Отправить изображение":
+                        nameCommand = "Отправить изображение";
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите изображение, которое вы хотите отправить");
-                        nameCommand = "Отправить изображение";
+                        
                         break;
 
                     case "Получить изображение":
+                        nameCommand = "Получить изображение";
                         await bot.SendTextMessageAsync(
                             msg.Chat.Id,
                             "Выберите изображение, которое вы хотите получить, напишите название изображение в чат");
                         GetNameFile(msg.Chat.Id, "pictures");
-                        nameCommand = "Получить изображение";
+                        
                         break;
                     default:
+                        nameCommand = null;
                         await bot.SendTextMessageAsync
                         (
                             msg.Chat.Id,
