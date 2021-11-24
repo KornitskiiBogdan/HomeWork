@@ -59,9 +59,7 @@ namespace HomeWorkTheme9
                     break;
                 case "Отправить аудио":
                     DownLoad(e.Message.Document.FileId, $"{Directory.GetCurrentDirectory()}//audio//{e.Message.Document.FileName}");
-                    //DownLoad(e.Message.Document.FileId, $"{Directory.GetCurrentDirectory()}//audio//{e.Message.Document.FileName}");
                     break;
-
                 case "Получить аудио":
                     await bot.SendAudioAsync(
                         msg.Chat.Id,
@@ -91,7 +89,6 @@ namespace HomeWorkTheme9
         /// <param name="e"></param>
         private static async void MessageCommand(object sender, MessageEventArgs e)
         {
-            
             var msg = e.Message;
             if (msg.Text != null)
             {
@@ -202,7 +199,6 @@ namespace HomeWorkTheme9
             FileStream fs = new FileStream(path, FileMode.Create);
             await bot.DownloadFileAsync(file.FilePath, fs);
             fs.Close();
-
             fs.Dispose();
         }
     }

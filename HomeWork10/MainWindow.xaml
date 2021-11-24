@@ -1,0 +1,66 @@
+﻿<Window x:Class="HomeWork10.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork10"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        MinHeight="300"
+        MinWidth="400"
+        
+        MaxHeight="800"
+        MaxWidth="1200"
+        
+        Height="450" 
+        Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer 
+            CanContentScroll = "True">
+
+            <ListBox x:Name="logList" 
+                     Grid.Column="0" 
+                     Margin="5" 
+                     >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" 
+                                Margin="5" 
+                                BorderThickness="1" 
+                                CornerRadius="10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="{Binding FirstName}" Margin="0" FontSize="15"/>
+                                <TextBlock Text="{Binding Msg}" Margin="0" FontSize="20"/>
+                                <TextBlock Text="{Binding Time}" Margin="10 0" FontSize="10" Foreground="Gray" TextAlignment="Right"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <Canvas Grid.Column="1">
+            <Border
+                BorderBrush="Black"
+                BorderThickness="1" 
+                CornerRadius="10"
+                Canvas.Bottom="35">
+                <TextBox x:Name = "txtMessChanged" Language="ru-ru" SpellCheck.IsEnabled="True"  Canvas.Top="323" Height="72" Width="399">Введите сообщение</TextBox>
+            </Border>
+            <WrapPanel 
+                Canvas.Bottom="5"
+                Orientation="Horizontal">
+                <Button  Content="Сохранить историю" />
+                <Button Content="Загрузить историю" />
+                <Button Content="Отправить сообщение" />
+            </WrapPanel>
+
+            <TextBlock x:Name="IdMessage"  Height="28" TextWrapping="Wrap" Text="{Binding Id}" Width="92" />
+
+        </Canvas>
+    </Grid>
+</Window>
