@@ -15,52 +15,90 @@
         Height="450" 
         Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="310*"/>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="39*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
-        <ScrollViewer 
+        <Border
+            BorderBrush="Black"
+            CornerRadius="5"
+            BorderThickness="1"
+            Padding="5"
+            Margin="3"
+            Grid.Column="0"
+            Grid.RowSpan="2">
+            <ScrollViewer 
+            x:Name="scrollViewer" 
             CanContentScroll = "True">
-
-            <ListBox x:Name="logList" 
+                <ListBox x:Name="userList" 
                      Grid.Column="0" 
-                     Margin="5" 
+                     Margin="5, 5, 5, 0" 
                      >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" 
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                BorderBrush="Black" 
                                 Margin="5" 
                                 BorderThickness="1" 
                                 CornerRadius="10">
-                            <StackPanel Margin="10">
-                                <TextBlock Text="{Binding FirstName}" Margin="0" FontSize="15"/>
-                                <TextBlock Text="{Binding Msg}" Margin="0" FontSize="20"/>
-                                <TextBlock Text="{Binding Time}" Margin="10 0" FontSize="10" Foreground="Gray" TextAlignment="Right"/>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="{Binding NickName}" Margin="0" FontSize="15"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Border>
+
+        <TextBox 
+            x:Name = "txtMessChanged" 
+            Language="ru-ru" 
+            SpellCheck.IsEnabled="True"  
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Grid.Row="1"
+            Margin="0, 0, 5, 5">
+            Введите сообщение
+        </TextBox>
+        <Button x:Name="btnSaveHistory" Grid.Row="1" Grid.Column="1" Content="Сохранить историю" Margin="0,85,5,5" Grid.RowSpan="2" />
+        <Button x:Name="btnDownoloadHistory" Grid.Row="1" Grid.Column="2" Content="Загрузить историю" Margin="0,85,5,5" Grid.RowSpan="2" />
+        <Button x:Name="btnSendMessage" Grid.Row="1" Grid.Column="3" Content="Отправить сообщение" Margin="0,85,5,5" Grid.RowSpan="2" />
+        <Border
+            BorderBrush="Black"
+            CornerRadius="5"
+            BorderThickness="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
+            Grid.Row="0"
+            Padding="5"
+            Margin="0,0,5,5"
+            >
+            <ListBox 
+                ItemsSource ="{Binding ElementName=userList, Path= SelectedItem.Messages}">
             </ListBox>
-        </ScrollViewer>
-        <Canvas Grid.Column="1">
-            <Border
-                BorderBrush="Black"
-                BorderThickness="1" 
-                CornerRadius="10"
-                Canvas.Bottom="35">
-                <TextBox x:Name = "txtMessChanged" Language="ru-ru" SpellCheck.IsEnabled="True"  Canvas.Top="323" Height="72" Width="399">Введите сообщение</TextBox>
-            </Border>
-            <WrapPanel 
-                Canvas.Bottom="5"
-                Orientation="Horizontal">
-                <Button  Content="Сохранить историю" />
-                <Button Content="Загрузить историю" />
-                <Button Content="Отправить сообщение" />
-            </WrapPanel>
-
-            <TextBlock x:Name="IdMessage"  Height="28" TextWrapping="Wrap" Text="{Binding Id}" Width="92" />
-
-        </Canvas>
+        </Border>
+        <Border
+            Background="LightGray"
+            BorderBrush="Black" 
+            BorderThickness="0.7"
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="5, 4.3, 0, 5">
+            <TextBlock 
+                x:Name="TargetSend"
+                Text="{Binding ElementName=userList, Path=SelectedItem.Id}"
+                Padding="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="15"/>
+        </Border>
     </Grid>
 </Window>
