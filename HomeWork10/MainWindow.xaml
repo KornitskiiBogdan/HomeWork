@@ -79,7 +79,7 @@
             Grid.ColumnSpan="3"
             Grid.Row="0"
             Padding="5"
-            Margin="0,0,5,5"
+            Margin="0,3,5,5"
             >
             <ListBox 
                 ItemsSource ="{Binding ElementName=userList, Path= SelectedItem.Messages}">
@@ -91,7 +91,7 @@
             BorderThickness="0.7"
             Grid.Row="2"
             Grid.Column="0"
-            Margin="5, 4.3, 0, 5">
+            Margin="5, 4.3, 5, 5">
             <TextBlock 
                 x:Name="TargetSend"
                 Text="{Binding ElementName=userList, Path=SelectedItem.Id}"
