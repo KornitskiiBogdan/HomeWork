@@ -9,13 +9,13 @@ namespace HomeWorkTheme11.Organization
 {
     internal class Department
     {
-        public string DepartmentName { get; set; }
+        public string Name { get; set; }
         public ObservableCollection<Worker> Workers { get; set; }
         public int SalaryDepartment { get; set; }
         public ObservableCollection<Department> Departments { get; set; }
         public Department(ObservableCollection<Worker> Workers, string Name)
         {
-            this.DepartmentName = Name;
+            this.Name = Name;
             foreach (var elem in Workers)
             {
                 this.Workers.Add(elem);
@@ -23,7 +23,7 @@ namespace HomeWorkTheme11.Organization
         }
         public Department(string Name)
         {
-            this.DepartmentName = Name;
+            this.Name = Name;
         }
         public void AddDepartment(Department department)
         {
@@ -31,9 +31,6 @@ namespace HomeWorkTheme11.Organization
                 Departments = new ObservableCollection<Department>();
             Departments.Add(department);
         }
-        public override string ToString()
-        {
-            return DepartmentName;
-        }
+
     }
 }

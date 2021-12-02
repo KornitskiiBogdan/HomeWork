@@ -9,13 +9,12 @@ namespace HomeWorkTheme11.Organization
 {
     internal class Company
     {
-        public string Name { get; private set; }
+        public string CompanyName { get; private set; }
         public ObservableCollection<Department> Departments { get; set; }
-        public List<Worker> Workers { get; set; }
         public Random randomize;
         public Company(List<Department> Departments, string Name)
         {
-            this.Name = Name;
+            this.CompanyName = Name;
             this.Departments = new ObservableCollection<Department>();
             foreach(var departament in Departments)
             {
@@ -26,7 +25,7 @@ namespace HomeWorkTheme11.Organization
         {
             randomize = new Random();
             int countDepartment = randomize.Next(10);
-            this.Name = "Example";
+            this.CompanyName = "Example";
             this.Departments = new ObservableCollection<Department>();
             for(int i = 0; i < countDepartment; i++)
             {

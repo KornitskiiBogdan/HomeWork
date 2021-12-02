@@ -29,7 +29,7 @@ namespace HomeWorkTheme11
 
             company.Departments[0].AddDepartment(new Department("Twer12412"));
 
-            ListDepartment.ItemsSource = company.Departments;
+            orgnization.ItemsSource = company.Departments;
 
         }
     }
