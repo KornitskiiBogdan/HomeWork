@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HomeWorkTheme11.Organization
 {
-    internal class Worker : INotifyPropertyChanged
+    internal class Worker
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -33,6 +33,5 @@ namespace HomeWorkTheme11.Organization
             this.Position = Position;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

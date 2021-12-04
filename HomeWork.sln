@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWorkTheme8", "HomeWorkT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWorkTheme9", "HomeWorkTheme9\HomeWorkTheme9.csproj", "{85A3FAD2-652F-4F49-953B-DD53443FE1F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWork10", "HomeWork10\HomeWork10.csproj", "{A6F2DC10-C2A8-4708-B3CF-B6EBD72E389A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkTheme10", "HomeWork10\HomeWorkTheme10.csproj", "{A6F2DC10-C2A8-4708-B3CF-B6EBD72E389A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeWorkTheme11", "HomeWorkTheme11\HomeWorkTheme11.csproj", "{CF657520-6A1B-4E6A-BCCC-AF64D6606F27}"
 EndProject

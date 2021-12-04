@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,8 +59,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationViewModel\ApplicationViewModel.cs" />
+    <Compile Include="ApplicationViewModel\FileMethod\DialogService.cs" />
+    <Compile Include="ApplicationViewModel\FileMethod\IDialogService.cs" />
+    <Compile Include="ApplicationViewModel\FileMethod\IFileService.cs" />
+    <Compile Include="ApplicationViewModel\RelayCommand.cs" />
     <Compile Include="Organization\Boss.cs" />
     <Compile Include="Organization\Intern.cs" />
+    <Compile Include="ApplicationViewModel\FileMethod\Serialized.cs" />
     <Compile Include="Organization\Worker.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +100,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

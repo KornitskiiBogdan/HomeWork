@@ -22,15 +22,35 @@ namespace HomeWorkTheme11
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ApplicationViewModel.ApplicationViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            Company company = new Company();
 
-            company.Departments[0].AddDepartment(new Department("Twer12412"));
+            viewModel = new ApplicationViewModel.ApplicationViewModel();
 
-            orgnization.ItemsSource = company.Departments;
+        }
 
+        private void NewProject_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = viewModel.company;
+
+            organizationTree.ItemsSource = viewModel.company.Departments;
+        }
+
+        private void OpenProject_Click(object sender, RoutedEventArgs e)
+        {
+            var company = Serialized.DeserializedJson();
+
+            this.DataContext = company;
+
+            organizationTree.ItemsSource = company.Departments;
+        }
+
+        private void SaveProject_Click(object sender, RoutedEventArgs e)
+        {
+            Serialized.SerializedJson(viewModel.company);
+            MessageBox.Show("Project saved", $"{viewModel.company.CompanyName}", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

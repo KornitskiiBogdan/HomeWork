@@ -11,7 +11,10 @@ namespace HomeWorkTheme11.Organization
     {
         public string CompanyName { get; private set; }
         public ObservableCollection<Department> Departments { get; set; }
-        public Random randomize;
+        public Boss Boss { get; set; }
+        public Boss DeputyBoss { get; set; }
+
+        private Random randomize;
         public Company(List<Department> Departments, string Name)
         {
             this.CompanyName = Name;
@@ -21,11 +24,24 @@ namespace HomeWorkTheme11.Organization
                 this.Departments.Add(departament);
             }
         }
+        public Company(List<Department> Departments, string Name, Boss Boss, Boss DeputyBoss)
+        {
+            this.CompanyName = Name;
+            this.Departments = new ObservableCollection<Department>();
+            foreach (var departament in Departments)
+            {
+                this.Departments.Add(departament);
+            }
+            this.Boss = Boss;
+            this.DeputyBoss = DeputyBoss;
+        }
         public Company()
         {
             randomize = new Random();
             int countDepartment = randomize.Next(10);
             this.CompanyName = "Example";
+            DeputyBoss = new Boss("DeputyBoss", "LastNameDeputyBoss", 35, 0, "Заместитель", CompanyName);
+            Boss = new Boss("Boss", "LastName", 40, 10, "boss", CompanyName);
             this.Departments = new ObservableCollection<Department>();
             for(int i = 0; i < countDepartment; i++)
             {
