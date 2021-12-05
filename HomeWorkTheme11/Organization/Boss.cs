@@ -8,6 +8,13 @@ namespace HomeWorkTheme11.Organization
 {
     internal class Boss : Worker
     {
+        private int salary;
+        public new int Salary { get { return salary; } 
+            set 
+            {
+                
+            } 
+        }
         public Boss(
            string FirstName,
            string LastName,
