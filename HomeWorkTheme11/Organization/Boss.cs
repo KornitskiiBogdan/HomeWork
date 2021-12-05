@@ -19,5 +19,9 @@ namespace HomeWorkTheme11.Organization
         {
             this.Salary = SalaryDepartment * 15 /100;
         }
+        public Boss(Boss boss) : base(boss.FirstName, boss.LastName, boss.Age, boss.Salary, boss.Position, boss.NameDepartment)
+        {
+
+        }
     }
 }

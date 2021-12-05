@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWorkTheme11"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        
+        Title="MainWindow" 
+        MinHeight="650"
+        MinWidth="800" 
+        Height="650" 
+        Width="800">
     <Window.Resources>
         <Style x:Key="StyleTextBlock">
             <Setter Property="Control.FontSize" Value="17" />
@@ -24,22 +29,23 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="12*"/>
-            <RowDefinition Height="38*"/>
-            <RowDefinition Height="76*"/>
-            <RowDefinition Height="91*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="182*"/>
+            <RowDefinition Height="182*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="21*"/>
             <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
-        <Menu 
-            Grid.Row="0"
+        <Menu
             Grid.Column="0"
             Grid.ColumnSpan="2"
             FontSize="16"
-            VerticalAlignment="Top"
-            Background="LightGray">
+            VerticalAlignment="Center"
+            Background="LightGray" Height="24">
             <MenuItem Header="File">
                 <MenuItem Header="New Project" Click="NewProject_Click" />
                 <MenuItem Header="Open Project" Click="OpenProject_Click" />
@@ -52,9 +58,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2" 
             Grid.Row="1"
-            Style="{StaticResource StyleBorder}"
-            >
-        <StackPanel 
+            Style="{StaticResource StyleBorder}" Margin="5,5,5,5"
             >
             <WrapPanel>
                 <TextBlock 
@@ -62,16 +66,23 @@
                     FontWeight="Bold"
                     Text="Начальник организации:"
                     />
-                <TextBlock Style="{StaticResource StyleTextBlockFontSize}">
+                    <TextBlock Style="{StaticResource StyleTextBlockFontSize}">
                     <Run Text="{Binding Path=Boss.LastName}"/>
                     <Run Text="{Binding Path=Boss.FirstName}"/>
-                    <Run Text="возраст:" />
-                    <Run Text="{Binding Path=Boss.Age}"/>
-                    <Run Text="зарплата:" />
-                    <Run Text="{Binding Path=Boss.Salary}" />
-                </TextBlock>
-            </WrapPanel>
-            <WrapPanel>
+                    <Run Text="{Binding StringFormat=возраст:{0}, Path=Boss.Age}"/>
+                    <Run Text="{Binding StringFormat=зарплата:{0}, Path=Boss.Salary}" />
+                    </TextBlock>
+                </WrapPanel>
+        </Border>
+        <Border
+            Grid.Column="0"
+            Grid.ColumnSpan="2" 
+            Grid.Row="2"
+            Style="{StaticResource StyleBorder}" Margin="5,5,5,5"
+            >
+            <WrapPanel
+            Grid.Row="2"
+            Grid.Column="0">
                 <TextBlock 
                     Style="{StaticResource StyleTextBlock}" 
                     FontWeight="Bold"
@@ -80,19 +91,36 @@
                 <TextBlock Style="{StaticResource StyleTextBlockFontSize}">
                     <Run Text="{Binding Path=DeputyBoss.LastName}"/>
                     <Run Text="{Binding Path=DeputyBoss.FirstName}"/>
-                    <Run Text="возраст:" />
-                    <Run Text="{Binding Path=DeputyBoss.Age}"/>
-                    <Run Text="зарплата:" />
-                    <Run Text="{Binding Path=DeputyBoss.Salary}" />
+                    <Run Text="{Binding StringFormat=возраст:{0}, Path=DeputyBoss.Age}"/>
+                    <Run Text="{Binding StringFormat=зарплата:{0}, Path=DeputyBoss.Salary}" />
                 </TextBlock>
             </WrapPanel>
-        </StackPanel>
         </Border>
         <Border
             Grid.Column="0"
-            Grid.Row="2"
+            Grid.ColumnSpan="2" 
+            Grid.Row="3"
+            Style="{StaticResource StyleBorder}"
+            >
+            <WrapPanel>
+                <TextBlock 
+                    Style="{StaticResource StyleTextBlock}" 
+                    FontWeight="Bold"
+                    Text="Начальник департамента:"
+                    />
+                <TextBlock Style="{StaticResource StyleTextBlockFontSize}">
+                    <Run Text="{Binding ElementName=organizationTree, Path=SelectedItem.DepartmentBoss.LastName}"/>
+                    <Run Text="{Binding ElementName=organizationTree,Path=SelectedItem.DepartmentBoss.FirstName}"/>
+                    <Run Text="{Binding StringFormat=возраст:{0},ElementName=organizationTree, Path=SelectedItem.DepartmentBoss.Age}"/>
+                    <Run Text="{Binding StringFormat=зарплата:{0},ElementName=organizationTree, Path=SelectedItem.DepartmentBoss.Salary}" />
+                </TextBlock>
+            </WrapPanel>
+        </Border>
+        <Border
+            Grid.Column="0"
+            Grid.Row="4"
             Grid.RowSpan="3"
-            Style="{StaticResource StyleBorder}">
+            Style="{StaticResource StyleBorder}" Margin="5,5,5,5">
             <TreeView
             x:Name="organizationTree"
             FontSize="16" 
@@ -104,50 +132,75 @@
                 </TreeView.ItemTemplate>
             </TreeView>
         </Border>
-        <Border
-            Grid.Row="2"
+        <TextBlock 
+            Grid.Row="4"
             Grid.Column="1"
-            Style="{StaticResource StyleBorder}"
+            FontWeight="Bold"
+            Margin="5, 0, 0 ,0"
+            Text="Сотрудники:"
+            />
+        <Border
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource StyleBorder}" Margin="5, 15, 5, 5" 
             >
-        <ListView 
+            <ListView 
             x:Name="ListWorkers"
             Grid.Row="2"
             Grid.Column="1"
+            
             ItemsSource = "{Binding ElementName = organizationTree, Path = SelectedItem.Workers}"
             >
-
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text = "{Binding Path=FirstName}"/>
-                        <TextBlock Text = "{Binding Path=LastName}"/>
-                        <TextBlock Text = "{Binding Path=Age}"/>
-                        <TextBlock Text = "{Binding Path=Position}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock FontSize="12" FontWeight="Bold">
+                                <Run Text = "{Binding Path=FirstName }"/>
+                                <Run Text = "{Binding Path=LastName}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="10">
+                            <Run Text = "{Binding StringFormat=возраст:{0}, Path=Age}"/>
+                            <Run Text = "{Binding StringFormat=должность:{0}, Path=Position}"/>
+                            <Run Text="{Binding StringFormat=зарплата:{0}, Path=Salary}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Border>
-        <Border
-            Grid.Row="3"
+        <TextBlock 
+            Grid.Row="5"
             Grid.Column="1"
-            Style="{StaticResource StyleBorder}">
-        <ListView 
+            FontWeight="Bold"
+            Margin="5, 0, 0 ,0"
+            Text="Интерны:"
+            />
+        <Border
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource StyleBorder}" Margin="5, 15, 5, 5">
+            <ListView 
             x:Name="ListInterns"
             
             ItemsSource = "{Binding ElementName = organizationTree, Path = SelectedItem.Interns}" 
             >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text = "{Binding Path=FirstName}"/>
-                        <TextBlock Text = "{Binding Path=LastName}"/>
-                        <TextBlock Text = "{Binding Path=Age}"/>
-                        <TextBlock Text = "{Binding Path=Position}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock FontSize="12" FontWeight="Bold">
+                                <Run Text = "{Binding Path=FirstName }"/>
+                                <Run Text = "{Binding Path=LastName}"/>
+                            </TextBlock>
+                            <TextBlock FontSize="10">
+                            <Run Text = "{Binding StringFormat=возраст:{0}, Path=Age}"/>
+                            <Run Text = "{Binding StringFormat=должность:{0}, Path=Position}"/>
+                            <Run Text="{Binding StringFormat=зарплата:{0}, Path=Salary}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Border>
+        
     </Grid>
 </Window>

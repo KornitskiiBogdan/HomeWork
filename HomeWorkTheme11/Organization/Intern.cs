@@ -17,7 +17,6 @@ namespace HomeWorkTheme11.Organization
             string NameDepartment) 
             : base(FirstName, LastName, Age, Salary, Position, NameDepartment)
         {
-            this.Salary = Salary / (20 * 8);
         }
     }
 }

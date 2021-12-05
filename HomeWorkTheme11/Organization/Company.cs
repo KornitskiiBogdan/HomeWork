@@ -15,15 +15,7 @@ namespace HomeWorkTheme11.Organization
         public Boss DeputyBoss { get; set; }
 
         private Random randomize;
-        public Company(List<Department> Departments, string Name)
-        {
-            this.CompanyName = Name;
-            this.Departments = new ObservableCollection<Department>();
-            foreach(var departament in Departments)
-            {
-                this.Departments.Add(departament);
-            }
-        }
+
         public Company(List<Department> Departments, string Name, Boss Boss, Boss DeputyBoss)
         {
             this.CompanyName = Name;
@@ -38,15 +30,27 @@ namespace HomeWorkTheme11.Organization
         public Company()
         {
             randomize = new Random();
+
             int countDepartment = randomize.Next(10);
+
             this.CompanyName = "Example";
-            DeputyBoss = new Boss("DeputyBoss", "LastNameDeputyBoss", 35, 0, "Заместитель", CompanyName);
-            Boss = new Boss("Boss", "LastName", 40, 10, "boss", CompanyName);
-            this.Departments = new ObservableCollection<Department>();
+            
+            Departments = new ObservableCollection<Department>();
             for(int i = 0; i < countDepartment; i++)
             {
                 Departments.Add(new Department($"departament{i}"));
+                
             }
+
+            int salary = 0;
+            foreach (var dp in Departments)
+            {
+                salary += dp.SalaryDepartment;
+            }
+
+            DeputyBoss = new Boss("DeputyBoss", "LastNameDeputyBoss", 35, salary, "Заместитель", CompanyName);
+            
+            Boss = new Boss("Boss", "LastName", 40, salary + salary / 100 * 15, "boss", CompanyName);
         }
 
     }

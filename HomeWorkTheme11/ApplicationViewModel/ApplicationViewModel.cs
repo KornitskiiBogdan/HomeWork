@@ -15,11 +15,12 @@ namespace HomeWorkTheme11.ApplicationViewModel
 
         public ApplicationViewModel()
         {
-            Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}//Data//");
+            //Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}//Data//");
 
             company = new Company();
 
-            company.Departments[0].AddDepartment(new Department("Twer12412"));
+            company.Departments[0].AddDepartment(new Department("departmentNew"));
+            company.Departments[0].Departments[0].AddDepartment(new Department("departmentNew"));
         }
         
     }
