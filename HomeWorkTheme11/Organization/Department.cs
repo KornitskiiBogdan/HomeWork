@@ -10,12 +10,27 @@ namespace HomeWorkTheme11.Organization
     internal class Department
     {
         public string Name { get; set; }
+
+        public Boss DepartmentBoss { get; set; }
+
         public ObservableCollection<Worker> Workers { get; set; }
+
+        public ObservableCollection<Department> Departments { get; set; }
+        
         public ObservableCollection<Intern> Interns { get; set; }
+
         private int salaryDepartment;
+
         public int SalaryDepartment { get
             {
                 salaryDepartment = 0;
+                if (Departments != null)
+                {
+                    foreach (var dep in Departments)
+                    {
+                        salaryDepartment += dep.salaryDepartment;
+                    }
+                }
                 foreach (var w in Workers)
                 {
                     salaryDepartment += w.Salary;
@@ -24,13 +39,7 @@ namespace HomeWorkTheme11.Organization
                 {
                     salaryDepartment += i.Salary;
                 }
-                if (Departments != null)
-                {
-                    foreach (var dep in Departments)
-                    {
-                        salaryDepartment += dep.salaryDepartment;
-                    }
-                }
+
                 return salaryDepartment;
             }
             set
@@ -38,8 +47,6 @@ namespace HomeWorkTheme11.Organization
                 salaryDepartment = value;
             }
         }
-        public ObservableCollection<Department> Departments { get; set; }
-        public Boss DepartmentBoss { get; set; }
         private Random Random;
 
         public Department()
@@ -62,25 +69,22 @@ namespace HomeWorkTheme11.Organization
             }
             this.DepartmentBoss = new Boss($"Boss{Name}", "LastName", 30, SalaryDepartment, "Boss", Name);
         }
-        public Department(string Name, ObservableCollection<Department> departments)
+        public Department(string Name,
+            ObservableCollection<Worker> Workers,
+            ObservableCollection<Intern> Interns,
+            Boss Boss
+            )
         {
-            this.Departments = departments;
             this.Name = Name;
-            Workers = new ObservableCollection<Worker>();
-            Interns = new ObservableCollection<Intern>();
-            Random = new Random();
-            var count = Random.Next(5);
-            for (int i = 0; i < count; i++)
-            {
-                Workers.Add(new Worker($"FirstNameWorker{Name}{i}", $"LastName{i}", 30 + i, 1000, "Worker", Name));
-            }
-            for (int i = 0; i < count; i++)
-            {
-                Interns.Add(new Intern($"FirstNameIntern{Name}{i}", $"LastName{i}", 20 + i, 500, "Intern", Name));
-            }
-            this.DepartmentBoss = new Boss($"Boss{Name}", "LastName", 30, SalaryDepartment, "Boss", Name);
+            this.Workers = new ObservableCollection<Worker>();
+            this.Interns = new ObservableCollection<Intern>();
+            foreach (var elem in Workers)
+                Workers.Add(elem);
+            foreach (var elem in Interns)
+                Interns.Add(elem);
+            this.DepartmentBoss = new Boss(Boss);
         }
-        public Department(string Name, 
+        public Department(string Name,
             ObservableCollection<Department> departments,
             ObservableCollection<Worker> Workers,
             ObservableCollection<Intern> Interns,
@@ -97,13 +101,13 @@ namespace HomeWorkTheme11.Organization
             foreach (var elem in Interns)
                 Interns.Add(elem);
             this.DepartmentBoss = new Boss(Boss);
+            this.SalaryDepartment = SalaryDepartment;
         }
         public void AddDepartment(Department department)
         {
             if (Departments == null)
                 Departments = new ObservableCollection<Department>();
             Departments.Add(department);
-            DepartmentBoss.Salary = SalaryDepartment * 15 / 100;
         }
 
     }

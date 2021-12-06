@@ -35,10 +35,10 @@ namespace HomeWorkTheme11.Organization
 
             this.CompanyName = "Example";
             
-            Departments = new ObservableCollection<Department>();
+            var departments = new ObservableCollection<Department>();
             for(int i = 0; i < countDepartment; i++)
             {
-                Departments.Add(new Department($"departament{i}"));
+                departments.Add(new Department($"departament{i}"));
                 
             }
 
