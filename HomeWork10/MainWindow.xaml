@@ -58,16 +58,24 @@
             </ScrollViewer>
         </Border>
 
-        <TextBox 
-            x:Name = "txtMessChanged" 
-            Language="ru-ru" 
-            SpellCheck.IsEnabled="True"  
+        <Border
+            BorderBrush="Black"
+            CornerRadius="5"
             Grid.Column="1"
             Grid.ColumnSpan="3"
             Grid.Row="1"
-            Margin="0, 0, 5, 5">
-            Введите сообщение
-        </TextBox>
+            Margin="0, 0, 5, 5"
+            BorderThickness="1"
+            Padding="5"
+            >
+            <TextBox 
+            x:Name = "txtMessChanged" 
+            Language="ru-ru" 
+            SpellCheck.IsEnabled="True"  
+            >
+                Введите сообщение
+            </TextBox>
+        </Border>
         <Button x:Name="btnSaveHistory" Grid.Row="1" Grid.Column="1" Content="Сохранить историю" Margin="0,85,5,5" Grid.RowSpan="2" />
         <Button x:Name="btnDownoloadHistory" Grid.Row="1" Grid.Column="2" Content="Загрузить историю" Margin="0,85,5,5" Grid.RowSpan="2" />
         <Button x:Name="btnSendMessage" Grid.Row="1" Grid.Column="3" Content="Отправить сообщение" Margin="0,85,5,5" Grid.RowSpan="2" />
