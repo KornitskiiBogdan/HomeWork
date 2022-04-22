@@ -15,12 +15,11 @@ namespace HomeWorkTheme11.Organization
         public string Position { get; set; }
         public int Age { get; set; }
         public int Salary { get; set; }
-        public Worker
+        protected Worker
             (
             string FirstName, 
             string LastName, 
             int Age, 
-            int Salary, 
             string Position,
             string NameDepartment 
             )
@@ -29,9 +28,17 @@ namespace HomeWorkTheme11.Organization
             this.LastName = LastName;
             this.NameDepartment = NameDepartment;
             this.Age = Age;
-            this.Salary = Salary;
             this.Position = Position;
         }
-
+        static public Worker Create(string FirstName, 
+            string LastName, 
+            int Age,
+            string Position,
+            string NameDepartment, int Salary)
+        {
+            Worker worker = new Worker(FirstName, LastName, Age, Position, NameDepartment);
+            worker.Salary = Salary;
+            return worker;
+        }
     }
 }

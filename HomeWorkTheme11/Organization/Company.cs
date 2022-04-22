@@ -29,28 +29,27 @@ namespace HomeWorkTheme11.Organization
         }
         public Company()
         {
-            randomize = new Random();
+            //randomize = new Random();
 
-            int countDepartment = randomize.Next(10);
+            //int countDepartment = randomize.Next(10);
 
-            this.CompanyName = "Example";
-            
-            var departments = new ObservableCollection<Department>();
-            for(int i = 0; i < countDepartment; i++)
-            {
-                departments.Add(new Department($"departament{i}"));
+            //this.CompanyName = "Example";
+            //this.Departments = new ObservableCollection<Department>();
+            //for(int i = 0; i < countDepartment; i++)
+            //{
+            //    Departments.Add(new Department($"departament{i}"));
                 
-            }
+            //}
 
-            int salary = 0;
-            foreach (var dp in Departments)
-            {
-                salary += dp.SalaryDepartment;
-            }
+            //int salary = 0;
+            //foreach (var dp in Departments)
+            //{
+            //    salary += dp.SalaryDepartment;
+            //}
 
-            DeputyBoss = new Boss("DeputyBoss", "LastNameDeputyBoss", 35, salary, "Заместитель", CompanyName);
+            //DeputyBoss = new Boss("DeputyBoss", "LastNameDeputyBoss", 35, salary, "Заместитель", CompanyName);
             
-            Boss = new Boss("Boss", "LastName", 40, salary + salary / 100 * 15, "boss", CompanyName);
+            //Boss = new Boss("Boss", "LastName", 40, salary + salary / 100 * 15, "boss", CompanyName);
         }
 
     }

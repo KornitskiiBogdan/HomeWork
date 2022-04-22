@@ -59,9 +59,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationViewModel\ApplicationViewModel.cs" />
-    <Compile Include="ApplicationViewModel\FileMethod\DialogService.cs" />
-    <Compile Include="ApplicationViewModel\FileMethod\IDialogService.cs" />
-    <Compile Include="ApplicationViewModel\FileMethod\IFileService.cs" />
     <Compile Include="ApplicationViewModel\RelayCommand.cs" />
     <Compile Include="Organization\Boss.cs" />
     <Compile Include="Organization\Intern.cs" />
