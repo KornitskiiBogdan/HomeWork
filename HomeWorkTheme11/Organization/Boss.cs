@@ -45,6 +45,7 @@ namespace HomeWorkTheme11.Organization
         {
             foreach(var item in department.Departments)
             {
+                Salary += item.DepartmentBoss.Salary;
                 SetSalaryBoss(item, Salary);
             }
             foreach(var worker in department.Workers)

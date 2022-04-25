@@ -24,13 +24,6 @@ namespace HomeWorkTheme11.Organization
         
         private Random Random;
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //public void OnPropertyChanged([CallerMemberName] string prop = "")
-        //{
-        //    if (PropertyChanged != null)
-        //        PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        //}
-
         public Department()
         { }
 
@@ -84,7 +77,7 @@ namespace HomeWorkTheme11.Organization
             if (Departments == null)
                 Departments = new ObservableCollection<Department>();
             Departments.Add(department);
-            this.DepartmentBoss.Salary = DepartmentBoss.SetSalaryBoss(this, 0);
+            this.DepartmentBoss.Salary = DepartmentBoss.SetSalaryBoss(department, DepartmentBoss.Salary);
         }
 
     }

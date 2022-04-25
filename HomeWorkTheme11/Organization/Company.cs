@@ -15,7 +15,13 @@ namespace HomeWorkTheme11.Organization
         public Boss DeputyBoss { get; set; }
 
         private Random randomize;
+        public void UpdateSalary()
+        {
+            foreach(var deparment in Departments)
+            {
 
+            }
+        }
         public Company(List<Department> Departments, string Name, Boss Boss, Boss DeputyBoss)
         {
             this.CompanyName = Name;
